@@ -20,11 +20,26 @@ class Comment extends Model
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['user'];
+
+    /**
      * Get the post associated with the comment.
      */
     public function post()
     {
         return $this->hasOne(Post::class);
+    }
+
+    /**
+     * Get the user for the comment.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 
